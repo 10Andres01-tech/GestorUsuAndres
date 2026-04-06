@@ -1,0 +1,52 @@
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar Usuario</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="POST" action="{{url_for('guardar_usuario')}}">
+
+                    <div class="mb-3">
+                        <label>Usuario</label>
+                        <input type="text" class="form-control" name="txtusuario">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" name="txtcontrasena">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Rol</label>
+                        <select class="form-select" name="txtrol">
+                            <option value="">Seleccione</option>
+                            <option value="admin">Administrador</option>
+                            <option value="empleado">Empleado</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Documento</label>
+                        <input type="text" class="form-control" name="txtdocumento">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">
+                            Registrar
+                        </button>
+
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
