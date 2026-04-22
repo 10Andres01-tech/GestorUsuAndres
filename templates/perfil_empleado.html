@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Perfil</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4 text-center">
+        <h2 class="text-center">
+            Perfil de {{ session['usuario'] }}
+        </h2>
+    </div>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <td>Documento</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Cargo</td>
+                    <td>Salario Base</td>
+                    <td>Horas Extras</td>
+                    <td>Bonificación</td>
+                    <td>Salario Neto</td>
+                    <td>Opciones</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if emp %}
+                <tr>
+                    <td>{{ emp[1] }}</td>
+                    <td>{{ emp[2] }}</td>
+                    <td>{{ emp[3] }}</td>
+                    <td>{{ emp[4] }}</td>
+                    <td>{{ emp[5] }}</td>
+                    <td>{{ emp[6] }}</td>
+                    <td>{{ emp[7] }}</td>
+                    <td>{{ emp[10] }}</td>
+
+                    <td>
+                        <a href="{{ url_for('editar_perfil_empleado', id=emp[0]) }}" 
+                        class="btn btn-warning btn-sm">
+                        Editar
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">
+            Cerrar sesión
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

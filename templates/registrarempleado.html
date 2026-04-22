@@ -1,0 +1,71 @@
+<div class="modal" id="ModalEmpleado">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar Empleado</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                        <form method="POST" action="{{ url_for('guardar_empleado')}}">
+
+                            <div class="mb-3">
+                                <label>Ingresar nombre del empleado</label>
+                                <input type="text" class="form-control" name="txtnombre" placeholder="Ingrese el Nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Ingresar Apellido del empleado</label>
+                                <input type="text" class="form-control" name="txtapellido" placeholder="Ingrese el Apellido">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Documento</label>
+                                <input type="text" class="form-control" name="txtdocumento" placeholder="Ingrese el documento">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label>Cargo</label>
+                                <select class="form-select" name="txtcargo">
+                                    <option value="">Seleccione el cargo</option>
+                                    <option value="gerente">Gerente</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="contador">Contador</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Horas Extras</label>
+                                <input type="number" class="form-control" name="txthorasextras" placeholder="Ingrese las horas extras">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Bonificación</label>
+                                <input type="number" class="form-control" name="txtbonificacion" placeholder="Ingrese la bonificación">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Departamento</label>
+                                <select class="form-select" name="txtarea">
+                                    <option value="">Seleccione el departamento</option>
+                                    {% for d in departamentos %}
+                                        <option value="{{ d[0] }}">{{ d[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">
+                                    Registrar
+                                </button>
+
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+</div>

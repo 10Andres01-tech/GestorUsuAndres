@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2026 a las 18:10:43
+-- Tiempo de generación: 14-04-2026 a las 19:01:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,9 +67,9 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`id`, `documento`, `nombre`, `apellido`, `cargo`, `salariobase`, `horasextras`, `bonificacion`, `salud`, `pension`, `salarioneto`, `id_dep`) VALUES
-(1, '100', 'Pollo', 'Broaster', 'Gerente', 2800000.00, 10, 100000.00, 116400.00, 116400.00, 2677200.00, 1),
-(2, '999', 'Blanco ', 'Blancuso', 'administrador', 3500000.00, 1, 20000.00, 140920.00, 140920.00, 3241160.00, 1),
-(3, '1', 'ADMIN', 'OWNER', 'administrador', 3500000.00, 0, 10000.00, 140400.00, 140400.00, 3229200.00, 1);
+(7, '01', 'andres', 'jimenez', 'administrador', 3500000.00, 3, 50000.00, 142360.00, 142360.00, 3274280.00, 1),
+(8, '7', 'empleado', 'Casas', 'gerente', 5000000.00, 1, 10000.00, 200520.00, 200520.00, 4611960.00, 1),
+(14, '05', 'sara', 'Diaz', 'administrador', 5000000.00, 2, 30000.00, 141440.00, 141440.00, 3253120.00, 1);
 
 -- --------------------------------------------------------
 
@@ -90,13 +90,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usu`, `usuario`, `password`, `rol`, `documento`) VALUES
-(1, 'Negron', '1234', 'empleado', '100'),
-(3, 'Blanco', '1122', 'empleado', '999'),
-(5, 'ADMIN', '1', 'administrador', '1'),
-(6, 'juan', 'eldiablo', 'admin', '1415'),
-(7, 'ArmandoCasas', '159753', 'empleado', '468754'),
-(8, 'lulo', '1223', 'empleado', '10'),
-(9, 'lulolulon', '321', 'empleado', '34');
+(6, 'admin', '1', 'admin', '1415'),
+(12, 'prueba', '00', 'empleado', '7'),
+(16, 'Sara', '54321', 'empleado', '05');
 
 --
 -- Índices para tablas volcadas
@@ -136,13 +132,13 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
