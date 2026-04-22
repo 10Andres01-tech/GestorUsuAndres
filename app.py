@@ -4,7 +4,7 @@ from database import conectar
 app = Flask(__name__)
 app.secret_key = "clave_super_segura"
 
-# ================= LOGIN =================
+# login :) 
 
 @app.route('/')
 def login():
@@ -41,7 +41,7 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-# ================= PERFIL EMPLEADO =================
+# perfil emepleado
 
 @app.route('/perfil_empleado')
 def perfil_empleado():
@@ -51,10 +51,16 @@ def perfil_empleado():
     con = conectar()
     cursor = con.cursor()
 
-    cursor.execute("SELECT * FROM empleados WHERE documento = %s", (session['documento'],))
+    cursor.execute("""
+    SELECT e.*, d.nombreare
+    FROM empleados e
+    JOIN departamentos d ON e.id_dep = d.id_area
+    WHERE e.documento = %s
+    """, (session['documento'],))
     empleado = cursor.fetchone()
 
     return render_template("perfil_empleado.html", emp=empleado)
+
 #actualizar perfil 
 
 @app.route('/actualizar_perfil', methods=['POST'])
@@ -93,11 +99,9 @@ def actualizar_perfil():
     cursor.execute("""
         UPDATE empleados 
         SET nombre=%s, apellido=%s, cargo=%s, id_dep=%s,
-            salariobase=%s, salud=%s, pension=%s, salarioneto=%s
         WHERE id=%s
     """, (
         nombre, apellido, cargo, id_dep,
-        salariobase, int(salud), int(pension), int(salarioneto),
         id
     ))
 
@@ -105,8 +109,8 @@ def actualizar_perfil():
 
     flash("Datos actualizados correctamente", "success")
     return redirect(url_for('perfil_empleado'))
-# ================= INDEX =================
 
+# index
 @app.route('/index')
 def index():
     if 'usuario' not in session:
@@ -142,7 +146,8 @@ def index():
         })
 
     return render_template("index.html", lista=lista, empleados=empleados_calculados)
-# ================= USUARIOS =================
+
+# usuarios
 
 @app.route('/guardar_usuario', methods=['POST'])
 def guardar_usuario():
@@ -189,7 +194,7 @@ def eliminarusu(id):
 
     return redirect(url_for('index'))
 
-# ================= EDITAR USUARIO =================
+#editar usuarios
 
 @app.route('/editarusu/<int:id>')
 def editarusu(id):
@@ -220,7 +225,8 @@ def actualizar_usuario():
     flash("Usuario actualizado correctamente", "success")
     return redirect(url_for('index'))
 
-# ================= EMPLEADOS =================
+# empleados
+
 
 @app.route('/guardar_empleado', methods=['POST'])
 def guardar_empleado():
@@ -266,7 +272,7 @@ def guardar_empleado():
 
     return redirect(url_for('index'))
 
-# ================= ELIMINAR EMPLEADO =================
+# eliminar empleado
 
 @app.route('/eliminaremple/<int:id>')
 def eliminaremple(id):
@@ -287,14 +293,14 @@ def eliminaremple(id):
 
     return redirect(url_for('index'))
 
-# ================= EDITAR EMPLEADO (ADMIN) =================
+# editar empleado por admin
 
 @app.route('/editaremple/<int:id>')
 def editaremple(id):
 
     if 'usuario' not in session:
         return redirect(url_for('login'))
-
+#################
     if session['rol'] != 'admin':
         return redirect(url_for('perfil_empleado'))
 
@@ -320,7 +326,7 @@ def actualizar_empleado():
     horas = int(request.form['txthorasextras'])
     bonificacion = float(request.form['txtbonificacion'])
 
-    # 🔧 calcular salario base correctamente
+    # calcular salario base correctamente
     if cargo == "gerente":
         salariobase = 5000000
     elif cargo == "administrador":
@@ -356,7 +362,7 @@ def actualizar_empleado():
     flash("Empleado actualizado correctamente", "success")
     return redirect(url_for('index'))
 
-# =============== EDITAR PERFIL EMPLEADO ================
+# editar perfil emple
 
 @app.route('/editar_perfil_empleado/<int:id>')
 def editar_perfil_empleado(id):
@@ -370,8 +376,6 @@ def editar_perfil_empleado(id):
     empleado = cursor.fetchone()
 
     return render_template("editar_perfil_empleado.html", emp=empleado)
-
-# ================= RUN =================
 
 if __name__ == '__main__':
     app.run(debug=True)

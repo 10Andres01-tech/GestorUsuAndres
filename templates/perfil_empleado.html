@@ -30,6 +30,7 @@
                     <td>Horas Extras</td>
                     <td>Bonificación</td>
                     <td>Salario Neto</td>
+                    <td>Departamento</td>
                     <td>Opciones</td>
                 </tr>
             </thead>
@@ -44,7 +45,9 @@
                     <td>{{ emp[5] }}</td>
                     <td>{{ emp[6] }}</td>
                     <td>{{ emp[7] }}</td>
+                    <!--aqui toy-->
                     <td>{{ emp[10] }}</td>
+                    <td>{{ emp[12] }}</td>
 
                     <td>
                         <a href="{{ url_for('editar_perfil_empleado', id=emp[0]) }}" 
