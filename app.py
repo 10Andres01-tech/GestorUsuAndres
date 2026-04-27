@@ -98,7 +98,7 @@ def actualizar_perfil():
 
     cursor.execute("""
         UPDATE empleados 
-        SET nombre=%s, apellido=%s, cargo=%s, id_dep=%s,
+        SET nombre=%s, apellido=%s, cargo=%s, id_dep=%s
         WHERE id=%s
     """, (
         nombre, apellido, cargo, id_dep,

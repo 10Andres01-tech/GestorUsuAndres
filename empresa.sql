@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2026 a las 19:01:27
+-- Tiempo de generación: 27-04-2026 a las 15:04:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,7 +39,9 @@ CREATE TABLE `departamentos` (
 INSERT INTO `departamentos` (`id_area`, `nombreare`) VALUES
 (1, 'RR.HHH'),
 (2, 'Sistemas'),
-(3, 'Contabilidad');
+(3, 'Contabilidad'),
+(4, 'Administración'),
+(5, 'Cafetería');
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
